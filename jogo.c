@@ -114,7 +114,7 @@ printf("4- D: Imortal\n");
 printf("Escolha uma alternativa: \n");
 scanf("%d", &escolha_p_r_5);
 
-if (escolha_p_r_2 == 2) 
+if (escolha_p_r_5 == 5) 
 {
 printf("A resposta esta certa, parabens :) !!!!\n");
 }
