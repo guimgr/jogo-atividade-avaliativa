@@ -140,7 +140,7 @@ int main()
                 }
                 else 
                 {
-                    loop_respota = 1
+                    loop_resposta = 1
                     }
         }
 
