@@ -18,7 +18,9 @@ int main()
 
         if (escolha_menu == 1)
         {
-            int escolha_p_r_1, escolha_p_r_2, escolha_p_r_3, escolha_p_r_4, escolha_p_r_5;
+            int escolha_p_r_1, escolha_p_r_2, escolha_p_r_3, escolha_p_r_4, escolha_p_r_5, loop_resposta = 0, escolhasn;
+            
+            while(loop_resposta == 0){
             printf("É um jogo de perguntas com quatro alternativas, onde o usuário escolhe uma resposta e o sistema informa se está certa ou errada, mostrando a correta caso haja erro.\n");
 
             // Pergunta 1
@@ -98,7 +100,7 @@ int main()
 
             printf("Escolha uma alternativa: \n");
             scanf("%d", &escolha_p_r_4);
-
+            }
             if (escolha_p_r_4 == 4)
             {
                 printf("A resposta esta certa, parabens :) !!!!\n");
@@ -130,6 +132,16 @@ int main()
                 printf("A resposta esta incorreta :(\n");
                 printf("A resposta correta eh 2- B\n");
             }
+            printf("você desejar jogar novamente? (1) ou voltar para o menu principal? (2): ");
+            scanf("%d", &escolhasn);
+            if(escolhasn == 1) 
+            {
+                loop_resposta = 0;
+                }
+                else 
+                {
+                    loop_respota = 1
+                    }
         }
 
         else if (escolha_menu == 2)
