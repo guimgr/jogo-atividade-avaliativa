@@ -6,7 +6,7 @@
 - Gabriel Castro
 
 ## Sobre o projeto
-Este projeto foi desenvolvido na disciplina de algoritmos com o objetivo de criar um Jogo em C, executado no console, contendo três minijogos acessíveis por um menu principal. A proposta busca aplicar, na prática, conceitos de programação, lógica e resolução de problemas. 
+Este projeto foi desenvolvido na disciplina de programação com o objetivo de criar um Jogo em C, executado no console, contendo três minijogos acessíveis por um menu principal. A proposta busca aplicar, na prática, conceitos de programação, lógica e resolução de problemas. 
 
 ## Objetivos
 O projeto tem como foco o desenvolvimento das seguintes competências:
