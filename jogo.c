@@ -100,7 +100,7 @@ int main()
 
             printf("Escolha uma alternativa: \n");
             scanf("%d", &escolha_p_r_4);
-            }
+            
             if (escolha_p_r_4 == 4)
             {
                 printf("A resposta esta certa, parabens :) !!!!\n");
@@ -132,19 +132,21 @@ int main()
                 printf("A resposta esta incorreta :(\n");
                 printf("A resposta correta eh 2- B\n");
             }
-            printf("você desejar jogar novamente? (1) ou voltar para o menu principal? (2): ");
+            printf("você desejar jogar novamente? (1) ou voltar para o menu principal? (2): \n");
+            printf(" \n");
             scanf("%d", &escolhasn);
             if(escolhasn == 1) 
             {
                 loop_resposta = 0;
                 }
-                else 
+                else if (escolhasn == 2)
                 {
-                    loop_resposta = 1
+                    loop_resposta = 1;
                     }
+			}
         }
 
-        else if (escolha_menu == 2)
+         if (escolha_menu == 2)
         {
             char nomes[7][30] = {
                 "Indiana Jones", "Nathan Drake", "Lara Croft", "Rick O'Connell",
