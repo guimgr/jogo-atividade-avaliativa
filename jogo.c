@@ -239,9 +239,6 @@ int main()
                         printf("Sorteio:  %s comeca!\n", nome2);
 
                     printf("\nPressione ENTER para iniciar...");
-                    getchar();
-                    getchar();
-
                     resultado = 0;
                     caixas_restantes = 5;
 
