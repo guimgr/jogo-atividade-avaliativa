@@ -318,332 +318,310 @@ int main() {
             printf("\nObrigado por jogar! Ate logo!\n");
         }
 
-        else if (escolha_menu == 3) {
-            int jogar_gousma_novamente = 1;
+            else if (escolha_menu == 3) {
+    int jogar_gousma_novamente = 1;
 
-            while (jogar_gousma_novamente == 1) {
-                int g1j1_f = 1, g2j1_f = 1, g1j2_f = 1, g2j2_f = 1;
-                char escolha_gousmaj1, escolha_gousmaj2;
-                int escolha_gousma_atacarj1_contraj2, escolha_gousma_atacadaj2;
-                int escolha_gousma_atacarj2_contraj1, escolha_gousma_atacadaj1;
-                int qtd_transferir;
+    while (jogar_gousma_novamente == 1) {
+        int g1j1_f = 1, g2j1_f = 1, g1j2_f = 1, g2j2_f = 1;
+        char escolha_gousmaj1, escolha_gousmaj2;
+        int escolha_gousma_atacarj1_contraj2, escolha_gousma_atacadaj2;
+        int escolha_gousma_atacarj2_contraj1, escolha_gousma_atacadaj1;
+        int qtd_transferir;
+        int fim_partida = 0;
 
-                printf("\nNeste jogo de estrategia, dois jogadores controlam criaturas chamadas Gousmas.\n");
-                printf("Cada Gousma tem um valor inteiro chamado furia.\n");
-                printf("A estrategia do jogo envolve:\n");
-                printf("Aumentar a furia do inimigo ate ele ser destruido\n");
-                printf("Controlar a propria furia para nao perder suas criaturas.\n");
+        printf("\nNeste jogo de estrategia, dois jogadores controlam criaturas chamadas Gousmas.\n");
+        printf("Cada Gousma tem um valor inteiro chamado furia.\n");
+        printf("A estrategia do jogo envolve:\n");
+        printf("Aumentar a furia do inimigo ate ele ser destruido\n");
+        printf("Controlar a propria furia para nao perder suas criaturas.\n");
 
-                while (1) {
-                    printf("\nVez do Jogador 1: o que voce vai fazer? Atacar(A) ou Dividir(D): ");
-                    scanf(" %c", &escolha_gousmaj1);
+        while (fim_partida == 0) {
 
-                    while (escolha_gousmaj1 != 'A' && escolha_gousmaj1 != 'a' &&
-                           escolha_gousmaj1 != 'D' && escolha_gousmaj1 != 'd') {
-                        printf("Opcao invalida. Digite A para atacar ou D para dividir: ");
-                        scanf(" %c", &escolha_gousmaj1);
-                    }
+            printf("\nJogador 1 - Gousma 1: %d | Gousma 2: %d\n", g1j1_f, g2j1_f);
+            printf("Jogador 2 - Gousma 1: %d | Gousma 2: %d\n", g1j2_f, g2j2_f);
 
-                    if (escolha_gousmaj1 == 'A' || escolha_gousmaj1 == 'a') {
-                        printf("Voce vai querer usar que Gousma sua para atacar? (1 ou 2): \n");
+            printf("\nVez do Jogador 1: o que voce vai fazer? Atacar(A) ou Dividir(D): ");
+            scanf(" %c", &escolha_gousmaj1);
+
+            while (escolha_gousmaj1 != 'A' && escolha_gousmaj1 != 'a' &&
+                   escolha_gousmaj1 != 'D' && escolha_gousmaj1 != 'd') {
+                printf("Opcao invalida. Digite A para atacar ou D para dividir: ");
+                scanf(" %c", &escolha_gousmaj1);
+            }
+
+            if (escolha_gousmaj1 == 'A' || escolha_gousmaj1 == 'a') {
+                printf("Voce vai querer usar que Gousma sua para atacar? (1 ou 2): \n");
+                scanf("%d", &escolha_gousma_atacarj1_contraj2);
+
+                while (escolha_gousma_atacarj1_contraj2 != 1 && escolha_gousma_atacarj1_contraj2 != 2) {
+                    printf("Gousma atacante invalida. Digite 1 ou 2: \n");
+                    scanf("%d", &escolha_gousma_atacarj1_contraj2);
+                }
+
+                while ((escolha_gousma_atacarj1_contraj2 == 1 && g1j1_f == 0) ||
+                       (escolha_gousma_atacarj1_contraj2 == 2 && g2j1_f == 0)) {
+                    printf("Essa Gousma esta destruida e nao pode atacar. Escolha outra (1 ou 2): \n");
+                    scanf("%d", &escolha_gousma_atacarj1_contraj2);
+
+                    while (escolha_gousma_atacarj1_contraj2 != 1 && escolha_gousma_atacarj1_contraj2 != 2) {
+                        printf("Gousma atacante invalida. Digite 1 ou 2: \n");
                         scanf("%d", &escolha_gousma_atacarj1_contraj2);
-
-                        while (escolha_gousma_atacarj1_contraj2 != 1 && escolha_gousma_atacarj1_contraj2 != 2) {
-                            printf("Gousma atacante invalida. Digite 1 ou 2: \n");
-                            scanf("%d", &escolha_gousma_atacarj1_contraj2);
-                        }
-
-                        if (escolha_gousma_atacarj1_contraj2 == 1) {
-                            if (g1j1_f == 0) {
-                                printf("A Gousma 1 do Jogador 1 esta destruida e nao pode atacar.\n");
-                            }
-                            else {
-                                printf("Voce vai querer atacar qual Gousma do Jogador 2? (1 ou 2): \n");
-                                scanf("%d", &escolha_gousma_atacadaj2);
-
-                                while (escolha_gousma_atacadaj2 != 1 && escolha_gousma_atacadaj2 != 2) {
-                                    printf("Gousma alvo invalida. Digite 1 ou 2: \n");
-                                    scanf("%d", &escolha_gousma_atacadaj2);
-                                }
-
-                                if (escolha_gousma_atacadaj2 == 1) {
-                                    if (g1j2_f == 0) {
-                                        printf("A Gousma 1 do Jogador 2 esta destruida e nao pode ser atacada.\n");
-                                    }
-                                    else {
-                                        g1j2_f = g1j2_f + g1j1_f;
-                                    }
-                                }
-                                else if (escolha_gousma_atacadaj2 == 2) {
-                                    if (g2j2_f == 0) {
-                                        printf("A Gousma 2 do Jogador 2 esta destruida e nao pode ser atacada.\n");
-                                    }
-                                    else {
-                                        g2j2_f = g2j2_f + g1j1_f;
-                                    }
-                                }
-                            }
-                        }
-                        else if (escolha_gousma_atacarj1_contraj2 == 2) {
-                            if (g2j1_f == 0) {
-                                printf("A Gousma 2 do Jogador 1 esta destruida e nao pode atacar.\n");
-                            }
-                            else {
-                                printf("Voce vai querer atacar qual Gousma do Jogador 2? (1 ou 2): \n");
-                                scanf("%d", &escolha_gousma_atacadaj2);
-
-                                while (escolha_gousma_atacadaj2 != 1 && escolha_gousma_atacadaj2 != 2) {
-                                    printf("Gousma alvo invalida. Digite 1 ou 2: \n");
-                                    scanf("%d", &escolha_gousma_atacadaj2);
-                                }
-
-                                if (escolha_gousma_atacadaj2 == 1) {
-                                    if (g1j2_f == 0) {
-                                        printf("A Gousma 1 do Jogador 2 esta destruida e nao pode ser atacada.\n");
-                                    }
-                                    else {
-                                        g1j2_f = g1j2_f + g2j1_f;
-                                    }
-                                }
-                                else if (escolha_gousma_atacadaj2 == 2) {
-                                    if (g2j2_f == 0) {
-                                        printf("A Gousma 2 do Jogador 2 esta destruida e nao pode ser atacada.\n");
-                                    }
-                                    else {
-                                        g2j2_f = g2j2_f + g2j1_f;
-                                    }
-                                }
-                            }
-                        }
                     }
+                }
 
-                    if (escolha_gousmaj1 == 'D' || escolha_gousmaj1 == 'd') {
-                        printf("Qual Gousma do Jogador 1 vai dividir a furia? (1 ou 2): \n");
-                        scanf("%d", &escolha_gousma_atacarj1_contraj2);
+                printf("Voce vai querer atacar qual Gousma do Jogador 2? (1 ou 2): \n");
+                scanf("%d", &escolha_gousma_atacadaj2);
 
-                        while (escolha_gousma_atacarj1_contraj2 != 1 && escolha_gousma_atacarj1_contraj2 != 2) {
-                            printf("Gousma invalida. Digite 1 ou 2: \n");
-                            scanf("%d", &escolha_gousma_atacarj1_contraj2);
-                        }
+                while (escolha_gousma_atacadaj2 != 1 && escolha_gousma_atacadaj2 != 2) {
+                    printf("Gousma alvo invalida. Digite 1 ou 2: \n");
+                    scanf("%d", &escolha_gousma_atacadaj2);
+                }
 
-                        if (escolha_gousma_atacarj1_contraj2 == 1) {
-                            if (g1j1_f <= 1) {
-                                printf("Essa Gousma nao pode dividir porque ficaria sem furia ou esta destruida.\n");
-                            }
-                            else {
-                                printf("Quanto de furia deseja transferir da Gousma 1 para a Gousma 2? (1 ate %d): \n", g1j1_f - 1);
-                                scanf("%d", &qtd_transferir);
+                while ((escolha_gousma_atacadaj2 == 1 && g1j2_f == 0) ||
+                       (escolha_gousma_atacadaj2 == 2 && g2j2_f == 0)) {
+                    printf("Essa Gousma do Jogador 2 esta destruida e nao pode ser atacada. Escolha outra (1 ou 2): \n");
+                    scanf("%d", &escolha_gousma_atacadaj2);
 
-                                if (qtd_transferir >= 1 && qtd_transferir < g1j1_f) {
-                                    g1j1_f = g1j1_f - qtd_transferir;
-                                    g2j1_f = g2j1_f + qtd_transferir;
-                                }
-                                else {
-                                    printf("Valor invalido para divisao.\n");
-                                }
-                            }
-                        }
-                        else if (escolha_gousma_atacarj1_contraj2 == 2) {
-                            if (g2j1_f <= 1) {
-                                printf("Essa Gousma nao pode dividir porque ficaria sem furia ou esta destruida.\n");
-                            }
-                            else {
-                                printf("Quanto de furia deseja transferir da Gousma 2 para a Gousma 1? (1 ate %d): \n", g2j1_f - 1);
-                                scanf("%d", &qtd_transferir);
-
-                                if (qtd_transferir >= 1 && qtd_transferir < g2j1_f) {
-                                    g2j1_f = g2j1_f - qtd_transferir;
-                                    g1j1_f = g1j1_f + qtd_transferir;
-                                }
-                                else {
-                                    printf("Valor invalido para divisao.\n");
-                                }
-                            }
-                        }
+                    while (escolha_gousma_atacadaj2 != 1 && escolha_gousma_atacadaj2 != 2) {
+                        printf("Gousma alvo invalida. Digite 1 ou 2: \n");
+                        scanf("%d", &escolha_gousma_atacadaj2);
                     }
+                }
 
-                    if (g1j1_f > 5) {
-                        g1j1_f = 0;
-                        printf("A Gousma 1 do Jogador 1 foi destruida!\n");
+                if (escolha_gousma_atacarj1_contraj2 == 1) {
+                    if (escolha_gousma_atacadaj2 == 1) {
+                        g1j2_f = g1j2_f + g1j1_f;
                     }
-                    if (g2j1_f > 5) {
-                        g2j1_f = 0;
-                        printf("A Gousma 2 do Jogador 1 foi destruida!\n");
+                    else if (escolha_gousma_atacadaj2 == 2) {
+                        g2j2_f = g2j2_f + g1j1_f;
                     }
-                    if (g1j2_f > 5) {
-                        g1j2_f = 0;
-                        printf("A Gousma 1 do Jogador 2 foi destruida!\n");
+                }
+                else if (escolha_gousma_atacarj1_contraj2 == 2) {
+                    if (escolha_gousma_atacadaj2 == 1) {
+                        g1j2_f = g1j2_f + g2j1_f;
                     }
-                    if (g2j2_f > 5) {
-                        g2j2_f = 0;
-                        printf("A Gousma 2 do Jogador 2 foi destruida!\n");
-                    }
-
-                    if (g1j2_f == 0 && g2j2_f == 0) {
-                        printf("\nJogador 1 venceu!\n");
-                    }
-                    else {
-                        printf("\nVez do Jogador 2: o que voce vai fazer? Atacar(A) ou Dividir(D): ");
-                        scanf(" %c", &escolha_gousmaj2);
-
-                        while (escolha_gousmaj2 != 'A' && escolha_gousmaj2 != 'a' &&
-                               escolha_gousmaj2 != 'D' && escolha_gousmaj2 != 'd') {
-                            printf("Opcao invalida. Digite A para atacar ou D para dividir: ");
-                            scanf(" %c", &escolha_gousmaj2);
-                        }
-
-                        if (escolha_gousmaj2 == 'A' || escolha_gousmaj2 == 'a') {
-                            printf("Voce vai querer usar que Gousma sua para atacar? (1 ou 2): \n");
-                            scanf("%d", &escolha_gousma_atacarj2_contraj1);
-
-                            while (escolha_gousma_atacarj2_contraj1 != 1 && escolha_gousma_atacarj2_contraj1 != 2) {
-                                printf("Gousma atacante invalida. Digite 1 ou 2: \n");
-                                scanf("%d", &escolha_gousma_atacarj2_contraj1);
-                            }
-
-                            if (escolha_gousma_atacarj2_contraj1 == 1) {
-                                if (g1j2_f == 0) {
-                                    printf("A Gousma 1 do Jogador 2 esta destruida e nao pode atacar.\n");
-                                }
-                                else {
-                                    printf("Voce vai querer atacar qual Gousma do Jogador 1? (1 ou 2): \n");
-                                    scanf("%d", &escolha_gousma_atacadaj1);
-
-                                    while (escolha_gousma_atacadaj1 != 1 && escolha_gousma_atacadaj1 != 2) {
-                                        printf("Gousma alvo invalida. Digite 1 ou 2: \n");
-                                        scanf("%d", &escolha_gousma_atacadaj1);
-                                    }
-
-                                    if (escolha_gousma_atacadaj1 == 1) {
-                                        if (g1j1_f == 0) {
-                                            printf("A Gousma 1 do Jogador 1 esta destruida e nao pode ser atacada.\n");
-                                        }
-                                        else {
-                                            g1j1_f = g1j1_f + g1j2_f;
-                                        }
-                                    }
-                                    else if (escolha_gousma_atacadaj1 == 2) {
-                                        if (g2j1_f == 0) {
-                                            printf("A Gousma 2 do Jogador 1 esta destruida e nao pode ser atacada.\n");
-                                        }
-                                        else {
-                                            g2j1_f = g2j1_f + g1j2_f;
-                                        }
-                                    }
-                                }
-                            }
-                            else if (escolha_gousma_atacarj2_contraj1 == 2) {
-                                if (g2j2_f == 0) {
-                                    printf("A Gousma 2 do Jogador 2 esta destruida e nao pode atacar.\n");
-                                }
-                                else {
-                                    printf("Voce vai querer atacar qual Gousma do Jogador 1? (1 ou 2): \n");
-                                    scanf("%d", &escolha_gousma_atacadaj1);
-
-                                    while (escolha_gousma_atacadaj1 != 1 && escolha_gousma_atacadaj1 != 2) {
-                                        printf("Gousma alvo invalida. Digite 1 ou 2: \n");
-                                        scanf("%d", &escolha_gousma_atacadaj1);
-                                    }
-
-                                    if (escolha_gousma_atacadaj1 == 1) {
-                                        if (g1j1_f == 0) {
-                                            printf("A Gousma 1 do Jogador 1 esta destruida e nao pode ser atacada.\n");
-                                        }
-                                        else {
-                                            g1j1_f = g1j1_f + g2j2_f;
-                                        }
-                                    }
-                                    else if (escolha_gousma_atacadaj1 == 2) {
-                                        if (g2j1_f == 0) {
-                                            printf("A Gousma 2 do Jogador 1 esta destruida e nao pode ser atacada.\n");
-                                        }
-                                        else {
-                                            g2j1_f = g2j1_f + g2j2_f;
-                                        }
-                                    }
-                                }
-                            }
-                        }
-
-                        if (escolha_gousmaj2 == 'D' || escolha_gousmaj2 == 'd') {
-                            printf("Qual Gousma do Jogador 2 vai dividir a furia? (1 ou 2): \n");
-                            scanf("%d", &escolha_gousma_atacarj2_contraj1);
-
-                            while (escolha_gousma_atacarj2_contraj1 != 1 && escolha_gousma_atacarj2_contraj1 != 2) {
-                                printf("Gousma invalida. Digite 1 ou 2: \n");
-                                scanf("%d", &escolha_gousma_atacarj2_contraj1);
-                            }
-
-                            if (escolha_gousma_atacarj2_contraj1 == 1) {
-                                if (g1j2_f <= 1) {
-                                    printf("Essa Gousma nao pode dividir porque ficaria sem furia ou esta destruida.\n");
-                                }
-                                else {
-                                    printf("Quanto de furia deseja transferir da Gousma 1 para a Gousma 2? (1 ate %d): \n", g1j2_f - 1);
-                                    scanf("%d", &qtd_transferir);
-
-                                    if (qtd_transferir >= 1 && qtd_transferir < g1j2_f) {
-                                        g1j2_f = g1j2_f - qtd_transferir;
-                                        g2j2_f = g2j2_f + qtd_transferir;
-                                    }
-                                    else {
-                                        printf("Valor invalido para divisao.\n");
-                                    }
-                                }
-                            }
-                            else if (escolha_gousma_atacarj2_contraj1 == 2) {
-                                if (g2j2_f <= 1) {
-                                    printf("Essa Gousma nao pode dividir porque ficaria sem furia ou esta destruida.\n");
-                                }
-                                else {
-                                    printf("Quanto de furia deseja transferir da Gousma 2 para a Gousma 1? (1 ate %d): \n", g2j2_f - 1);
-                                    scanf("%d", &qtd_transferir);
-
-                                    if (qtd_transferir >= 1 && qtd_transferir < g2j2_f) {
-                                        g2j2_f = g2j2_f - qtd_transferir;
-                                        g1j2_f = g1j2_f + qtd_transferir;
-                                    }
-                                    else {
-                                        printf("Valor invalido para divisao.\n");
-                                    }
-                                }
-                            }
-                        }
-
-                        if (g1j1_f > 5) {
-                            g1j1_f = 0;
-                            printf("A Gousma 1 do Jogador 1 foi destruida!\n");
-                        }
-                        if (g2j1_f > 5) {
-                            g2j1_f = 0;
-                            printf("A Gousma 2 do Jogador 1 foi destruida!\n");
-                        }
-                        if (g1j2_f > 5) {
-                            g1j2_f = 0;
-                            printf("A Gousma 1 do Jogador 2 foi destruida!\n");
-                        }
-                        if (g2j2_f > 5) {
-                            g2j2_f = 0;
-                            printf("A Gousma 2 do Jogador 2 foi destruida!\n");
-                        }
-
-                        if (g1j1_f == 0 && g2j1_f == 0) {
-                            printf("\nJogador 2 venceu!\n");
-                        }
-                    }
-
-                    if ((g1j2_f == 0 && g2j2_f == 0) || (g1j1_f == 0 && g2j1_f == 0)) {
-                        printf("\nDigite 1 para jogar Gousmas War novamente ou 2 para voltar ao menu: ");
-                        scanf("%d", &jogar_gousma_novamente);
-
-                        if (jogar_gousma_novamente != 1) {
-                            jogar_gousma_novamente = 0;
-                        }
-                        break;
+                    else if (escolha_gousma_atacadaj2 == 2) {
+                        g2j2_f = g2j2_f + g2j1_f;
                     }
                 }
             }
+
+            if (escolha_gousmaj1 == 'D' || escolha_gousmaj1 == 'd') {
+                printf("Qual Gousma do Jogador 1 vai dividir a furia? (1 ou 2): \n");
+                scanf("%d", &escolha_gousma_atacarj1_contraj2);
+
+                while (escolha_gousma_atacarj1_contraj2 != 1 && escolha_gousma_atacarj1_contraj2 != 2) {
+                    printf("Gousma invalida. Digite 1 ou 2: \n");
+                    scanf("%d", &escolha_gousma_atacarj1_contraj2);
+                }
+
+                while ((escolha_gousma_atacarj1_contraj2 == 1 && g1j1_f <= 1) ||
+                       (escolha_gousma_atacarj1_contraj2 == 2 && g2j1_f <= 1)) {
+                    printf("Essa Gousma nao pode dividir porque ficaria sem furia ou esta destruida. Escolha outra (1 ou 2): \n");
+                    scanf("%d", &escolha_gousma_atacarj1_contraj2);
+
+                    while (escolha_gousma_atacarj1_contraj2 != 1 && escolha_gousma_atacarj1_contraj2 != 2) {
+                        printf("Gousma invalida. Digite 1 ou 2: \n");
+                        scanf("%d", &escolha_gousma_atacarj1_contraj2);
+                    }
+                }
+
+                if (escolha_gousma_atacarj1_contraj2 == 1) {
+                    printf("Quanto de furia deseja transferir da Gousma 1 para a Gousma 2? (1 ate %d): \n", g1j1_f - 1);
+                    scanf("%d", &qtd_transferir);
+
+                    while (qtd_transferir < 1 || qtd_transferir >= g1j1_f) {
+                        printf("Valor invalido para divisao. Digite novamente: \n");
+                        scanf("%d", &qtd_transferir);
+                    }
+
+                    g1j1_f = g1j1_f - qtd_transferir;
+                    g2j1_f = g2j1_f + qtd_transferir;
+                }
+                else if (escolha_gousma_atacarj1_contraj2 == 2) {
+                    printf("Quanto de furia deseja transferir da Gousma 2 para a Gousma 1? (1 ate %d): \n", g2j1_f - 1);
+                    scanf("%d", &qtd_transferir);
+
+                    while (qtd_transferir < 1 || qtd_transferir >= g2j1_f) {
+                        printf("Valor invalido para divisao. Digite novamente: \n");
+                        scanf("%d", &qtd_transferir);
+                    }
+
+                    g2j1_f = g2j1_f - qtd_transferir;
+                    g1j1_f = g1j1_f + qtd_transferir;
+                }
+            }
+
+            if (g1j1_f > 5) {
+                g1j1_f = 0;
+                printf("A Gousma 1 do Jogador 1 foi destruida!\n");
+            }
+            if (g2j1_f > 5) {
+                g2j1_f = 0;
+                printf("A Gousma 2 do Jogador 1 foi destruida!\n");
+            }
+            if (g1j2_f > 5) {
+                g1j2_f = 0;
+                printf("A Gousma 1 do Jogador 2 foi destruida!\n");
+            }
+            if (g2j2_f > 5) {
+                g2j2_f = 0;
+                printf("A Gousma 2 do Jogador 2 foi destruida!\n");
+            }
+
+            if (g1j2_f == 0 && g2j2_f == 0) {
+                printf("\nJogador 1 venceu!\n");
+                fim_partida = 1;
+            }
+
+            if (fim_partida == 0) {
+                printf("\nJogador 1 -> Gousma 1: %d | Gousma 2: %d\n", g1j1_f, g2j1_f);
+                printf("Jogador 2 -> Gousma 1: %d | Gousma 2: %d\n", g1j2_f, g2j2_f);
+
+                printf("\nVez do Jogador 2: o que voce vai fazer? Atacar(A) ou Dividir(D): ");
+                scanf(" %c", &escolha_gousmaj2);
+
+                while (escolha_gousmaj2 != 'A' && escolha_gousmaj2 != 'a' &&
+                       escolha_gousmaj2 != 'D' && escolha_gousmaj2 != 'd') {
+                    printf("Opcao invalida. Digite A para atacar ou D para dividir: ");
+                    scanf(" %c", &escolha_gousmaj2);
+                }
+
+                if (escolha_gousmaj2 == 'A' || escolha_gousmaj2 == 'a') {
+                    printf("Voce vai querer usar que Gousma sua para atacar? (1 ou 2): \n");
+                    scanf("%d", &escolha_gousma_atacarj2_contraj1);
+
+                    while (escolha_gousma_atacarj2_contraj1 != 1 && escolha_gousma_atacarj2_contraj1 != 2) {
+                        printf("Gousma atacante invalida. Digite 1 ou 2: \n");
+                        scanf("%d", &escolha_gousma_atacarj2_contraj1);
+                    }
+
+                    while ((escolha_gousma_atacarj2_contraj1 == 1 && g1j2_f == 0) ||
+                           (escolha_gousma_atacarj2_contraj1 == 2 && g2j2_f == 0)) {
+                        printf("Essa Gousma esta destruida e nao pode atacar. Escolha outra (1 ou 2): \n");
+                        scanf("%d", &escolha_gousma_atacarj2_contraj1);
+
+                        while (escolha_gousma_atacarj2_contraj1 != 1 && escolha_gousma_atacarj2_contraj1 != 2) {
+                            printf("Gousma atacante invalida. Digite 1 ou 2: \n");
+                            scanf("%d", &escolha_gousma_atacarj2_contraj1);
+                        }
+                    }
+
+                    printf("Voce vai querer atacar qual Gousma do Jogador 1? (1 ou 2): \n");
+                    scanf("%d", &escolha_gousma_atacadaj1);
+
+                    while (escolha_gousma_atacadaj1 != 1 && escolha_gousma_atacadaj1 != 2) {
+                        printf("Gousma alvo invalida. Digite 1 ou 2: \n");
+                        scanf("%d", &escolha_gousma_atacadaj1);
+                    }
+
+                    while ((escolha_gousma_atacadaj1 == 1 && g1j1_f == 0) ||
+                           (escolha_gousma_atacadaj1 == 2 && g2j1_f == 0)) {
+                        printf("Essa Gousma do Jogador 1 esta destruida e nao pode ser atacada. Escolha outra (1 ou 2): \n");
+                        scanf("%d", &escolha_gousma_atacadaj1);
+
+                        while (escolha_gousma_atacadaj1 != 1 && escolha_gousma_atacadaj1 != 2) {
+                            printf("Gousma alvo invalida. Digite 1 ou 2: \n");
+                            scanf("%d", &escolha_gousma_atacadaj1);
+                        }
+                    }
+
+                    if (escolha_gousma_atacarj2_contraj1 == 1) {
+                        if (escolha_gousma_atacadaj1 == 1) {
+                            g1j1_f = g1j1_f + g1j2_f;
+                        }
+                        else if (escolha_gousma_atacadaj1 == 2) {
+                            g2j1_f = g2j1_f + g1j2_f;
+                        }
+                    }
+                    else if (escolha_gousma_atacarj2_contraj1 == 2) {
+                        if (escolha_gousma_atacadaj1 == 1) {
+                            g1j1_f = g1j1_f + g2j2_f;
+                        }
+                        else if (escolha_gousma_atacadaj1 == 2) {
+                            g2j1_f = g2j1_f + g2j2_f;
+                        }
+                    }
+                }
+
+                if (escolha_gousmaj2 == 'D' || escolha_gousmaj2 == 'd') {
+                    printf("Qual Gousma do Jogador 2 vai dividir a furia? (1 ou 2): \n");
+                    scanf("%d", &escolha_gousma_atacarj2_contraj1);
+
+                    while (escolha_gousma_atacarj2_contraj1 != 1 && escolha_gousma_atacarj2_contraj1 != 2) {
+                        printf("Gousma invalida. Digite 1 ou 2: \n");
+                        scanf("%d", &escolha_gousma_atacarj2_contraj1);
+                    }
+
+                    while ((escolha_gousma_atacarj2_contraj1 == 1 && g1j2_f <= 1) ||
+                           (escolha_gousma_atacarj2_contraj1 == 2 && g2j2_f <= 1)) {
+                        printf("Essa Gousma nao pode dividir porque ficaria sem furia ou esta destruida. Escolha outra (1 ou 2): \n");
+                        scanf("%d", &escolha_gousma_atacarj2_contraj1);
+
+                        while (escolha_gousma_atacarj2_contraj1 != 1 && escolha_gousma_atacarj2_contraj1 != 2) {
+                            printf("Gousma invalida. Digite 1 ou 2: \n");
+                            scanf("%d", &escolha_gousma_atacarj2_contraj1);
+                        }
+                    }
+
+                    if (escolha_gousma_atacarj2_contraj1 == 1) {
+                        printf("Quanto de furia deseja transferir da Gousma 1 para a Gousma 2? (1 ate %d): \n", g1j2_f - 1);
+                        scanf("%d", &qtd_transferir);
+
+                        while (qtd_transferir < 1 || qtd_transferir >= g1j2_f) {
+                            printf("Valor invalido para divisao. Digite novamente: \n");
+                            scanf("%d", &qtd_transferir);
+                        }
+
+                        g1j2_f = g1j2_f - qtd_transferir;
+                        g2j2_f = g2j2_f + qtd_transferir;
+                    }
+                    else if (escolha_gousma_atacarj2_contraj1 == 2) {
+                        printf("Quanto de furia deseja transferir da Gousma 2 para a Gousma 1? (1 ate %d): \n", g2j2_f - 1);
+                        scanf("%d", &qtd_transferir);
+
+                        while (qtd_transferir < 1 || qtd_transferir >= g2j2_f) {
+                            printf("Valor invalido para divisao. Digite novamente: \n");
+                            scanf("%d", &qtd_transferir);
+                        }
+
+                        g2j2_f = g2j2_f - qtd_transferir;
+                        g1j2_f = g1j2_f + qtd_transferir;
+                    }
+                }
+
+                if (g1j1_f > 5) {
+                    g1j1_f = 0;
+                    printf("A Gousma 1 do Jogador 1 foi destruida!\n");
+                }
+                if (g2j1_f > 5) {
+                    g2j1_f = 0;
+                    printf("A Gousma 2 do Jogador 1 foi destruida!\n");
+                }
+                if (g1j2_f > 5) {
+                    g1j2_f = 0;
+                    printf("A Gousma 1 do Jogador 2 foi destruida!\n");
+                }
+                if (g2j2_f > 5) {
+                    g2j2_f = 0;
+                    printf("A Gousma 2 do Jogador 2 foi destruida!\n");
+                }
+
+                if (g1j1_f == 0 && g2j1_f == 0) {
+                    printf("\nJogador 2 venceu!\n");
+                    fim_partida = 1;
+                }
+            }
         }
+
+        printf("\nDigite 1 para jogar Gousmas War novamente ou 2 para voltar ao menu: ");
+        scanf("%d", &jogar_gousma_novamente);
+
+        if (jogar_gousma_novamente != 1) {
+            jogar_gousma_novamente = 0;
+        }
+    }
+}
 
         else if (escolha_menu == 4) {
             printf("\nObrigado por jogar! Ate logo!\n");
